@@ -1,1 +1,1 @@
-# pythonAutomationTraining
+# python_automation_training
