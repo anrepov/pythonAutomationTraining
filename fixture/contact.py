@@ -13,6 +13,7 @@ class ContactHelper:
         wd.find_element_by_link_text("add new").click()
         self.fill_contact_data(contact)
         wd.find_element_by_name("submit").click()
+        self.app.navigation.open_home_page()
 
     def change_field_value(self, field_name, text):
         wd = self.app.wd
@@ -26,7 +27,7 @@ class ContactHelper:
         wd.find_element_by_xpath("//*[@title='Edit']").click()
         self.fill_contact_data(contact)
         wd.find_element_by_name("update").click()
-        self.app.navigation.return_to_home_page()
+        self.app.navigation.open_home_page()
 
     def delete_first(self):
         wd = self.app.wd
@@ -34,7 +35,7 @@ class ContactHelper:
         wd.find_element_by_name("selected[]").click()
         wd.find_element_by_xpath("//*[@value='Delete']").click()
         self.app.navigation.accept_alert()
-        self.app.navigation.return_to_home_page()
+        self.app.navigation.open_home_page()
 
     def count(self):
         wd = self.app.wd
