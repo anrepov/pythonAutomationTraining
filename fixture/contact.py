@@ -4,19 +4,21 @@ class ContactHelper:
         self.app = app
 
     def fill_contact_data(self, contact):
-        wd = self.app.wd
-        wd.find_element_by_name("firstname").clear()
-        wd.find_element_by_name("firstname").send_keys(contact.firstname)
-        wd.find_element_by_name("middlename").clear()
-        wd.find_element_by_name("middlename").send_keys(contact.middlename)
-        wd.find_element_by_name("lastname").clear()
-        wd.find_element_by_name("lastname").send_keys(contact.lastname)
+        self.change_field_value("firstname", contact.firstname)
+        self.change_field_value("middlename", contact.middlename)
+        self.change_field_value("lastname", contact.lastname)
 
     def create(self, contact):
         wd = self.app.wd
         wd.find_element_by_link_text("add new").click()
         self.fill_contact_data(contact)
         wd.find_element_by_name("submit").click()
+
+    def change_field_value(self, field_name, text):
+        wd = self.app.wd
+        if text is not None:
+            wd.find_element_by_name(field_name).clear()
+            wd.find_element_by_name(field_name).send_keys(text)
 
     def modify_first(self, contact):
         wd = self.app.wd
@@ -33,3 +35,8 @@ class ContactHelper:
         wd.find_element_by_xpath("//*[@value='Delete']").click()
         self.app.navigation.accept_alert()
         self.app.navigation.return_to_home_page()
+
+    def count(self):
+        wd = self.app.wd
+        self.app.navigation.open_home_page()
+        return len(wd.find_elements_by_name("selected[]"))
