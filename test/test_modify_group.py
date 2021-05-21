@@ -4,7 +4,7 @@ from random import randrange
 from model.group import Group
 
 
-def test_modify_first_group(app):
+def test_modify_some_group(app):
     if app.group.count() == 0:
         app.group.create(Group("test"))
 

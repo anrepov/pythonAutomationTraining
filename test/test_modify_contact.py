@@ -4,7 +4,7 @@ from random import randrange
 from model.contact import Contact
 
 
-def test_modify_first_contact(app):
+def test_modify_some_contact(app):
     if app.contact.count() == 0:
         app.contact.create(Contact("test"))
 
@@ -12,7 +12,7 @@ def test_modify_first_contact(app):
     index = randrange(len(old_contacts))
     contact = Contact("name_mod", "middlename_mod", "lastname_mod")
     contact.id = old_contacts[index].id
-    app.contact.modify_first(contact)
+    app.contact.modify_by_index(contact, index)
     assert len(old_contacts) == app.contact.count()
     new_contacts = app.contact.get_contacts_list()
     old_contacts[index] = contact
