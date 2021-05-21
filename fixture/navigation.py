@@ -10,7 +10,7 @@ class NavigationHelper:
 
     def open_start_page(self):
         wd = self.app.wd
-        wd.get("http://localhost/addressbook/")
+        wd.get(self.app.base_url)
 
     def accept_alert(self):
         wd = self.app.wd
