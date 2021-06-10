@@ -5,7 +5,7 @@ from model.group import Group
 
 
 def test_modify_some_group(app, db, check_ui):
-    if db.get_group_list() == 0:
+    if len(db.get_group_list()) == 0:
         app.group.create(Group("test"))
 
     old_groups = db.get_group_list()
