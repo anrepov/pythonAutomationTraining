@@ -1,5 +1,7 @@
 import re
 
+from selenium.webdriver.support.select import Select
+
 from model.contact import Contact
 
 
@@ -39,6 +41,13 @@ class ContactHelper:
         wd = self.app.wd
         self.app.navigation.open_home_page()
         wd.find_element_by_css_selector("input[id='%s']" % id).click()
+
+    def select_current_group(self, group):
+        wd = self.app.wd
+        self.app.navigation.open_home_page()
+
+        select = Select(wd.find_element_by_name('group'))
+        select.select_by_value(group.id)
 
     def open_edit_contact_by_index(self, index):
         wd = self.app.wd
@@ -93,6 +102,30 @@ class ContactHelper:
         self.app.navigation.accept_alert()
         self.app.navigation.open_home_page()
         self.contacts_cache = None
+
+    def add_contact_to_group(self, contact, group):
+        wd = self.app.wd
+        self.app.navigation.open_home_page()
+        self.select_contact_by_id(contact.id)
+
+        select = Select(wd.find_element_by_name('to_group'))
+        select.select_by_value(group.id)
+        wd.find_element_by_name("add").click()
+
+        self.app.navigation.open_home_page()
+        self.contacts_cache = None
+
+    def delete_contact_from_group(self, contact, group):
+        wd = self.app.wd
+        self.app.navigation.open_home_page()
+        self.select_current_group(group=group)
+        self.select_contact_by_id(contact.id)
+        wd.find_element_by_name("remove").click()
+        self.app.navigation.open_home_page()
+        self.contacts_cache = None
+
+    def select_to_group(self, group):
+        wd = self.app.wd
 
     def count(self):
         wd = self.app.wd

@@ -36,5 +36,17 @@ class DbFixture:
                                     email1=email1, email2=email2, email3=email3))
         return list
 
+    def get_groups_with_contacts(self):
+        list = []
+
+        with self.connection.cursor() as cursor:
+            # Без второго столбца почему то возвращает как (Значение, ), поэтому добавил столбец-заглушку
+            cursor.execute(
+                "select distinct(group_id), 'dummy' from address_in_groups where deprecated = '0000-00-00 00:00:00'")
+            for row in cursor:
+                (group_id, dummy) = row
+                list.append(Group(id=str(group_id)))
+        return list
+
     def destroy(self):
         self.connection.close()
