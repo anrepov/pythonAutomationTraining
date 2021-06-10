@@ -35,10 +35,20 @@ class ContactHelper:
         self.app.navigation.open_home_page()
         wd.find_elements_by_name("selected[]")[index].click()
 
+    def select_contact_by_id(self, id):
+        wd = self.app.wd
+        self.app.navigation.open_home_page()
+        wd.find_element_by_css_selector("input[id='%s']" % id).click()
+
     def open_edit_contact_by_index(self, index):
         wd = self.app.wd
         self.app.navigation.open_home_page()
         wd.find_elements_by_xpath("//*[@title='Edit']")[index].click()
+
+    def open_edit_contact_by_id(self, id):
+        wd = self.app.wd
+        self.app.navigation.open_home_page()
+        wd.find_element_by_xpath("//*[@id='%s']/../..//*[@title='Edit']" % id).click()
 
     def open_view_contact_by_index(self, index):
         wd = self.app.wd
@@ -54,6 +64,15 @@ class ContactHelper:
         self.app.navigation.open_home_page()
         self.contacts_cache = None
 
+    def modify_by_id(self, contact, id):
+        wd = self.app.wd
+        self.app.navigation.open_home_page()
+        self.open_edit_contact_by_id(id)
+        self.fill_contact_data(contact)
+        wd.find_element_by_name("update").click()
+        self.app.navigation.open_home_page()
+        self.contacts_cache = None
+
     def delete_first(self):
         self.delete_by_index(0)
 
@@ -61,6 +80,15 @@ class ContactHelper:
         wd = self.app.wd
         self.app.navigation.open_home_page()
         self.select_contact_by_index(index)
+        wd.find_element_by_xpath("//*[@value='Delete']").click()
+        self.app.navigation.accept_alert()
+        self.app.navigation.open_home_page()
+        self.contacts_cache = None
+
+    def delete_by_id(self, id):
+        wd = self.app.wd
+        self.app.navigation.open_home_page()
+        self.select_contact_by_id(id)
         wd.find_element_by_xpath("//*[@value='Delete']").click()
         self.app.navigation.accept_alert()
         self.app.navigation.open_home_page()
