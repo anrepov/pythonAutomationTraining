@@ -160,16 +160,31 @@ def merge_phones_like_on_home_page(contact):
     return "\n".join(filter(lambda x: x != "",
                             map(lambda x: clear(x),
                                 filter(lambda x: x is not None,
-                                       [contact.homephone, contact.mobilephone,
-                                        contact.workphone,
-                                        contact.secondaryphone]))))
+                                       [replace_whitespaces(contact.homephone),
+                                        replace_whitespaces(contact.mobilephone),
+                                        replace_whitespaces(contact.workphone),
+                                        replace_whitespaces(contact.secondaryphone)]))))
 
 
 def merge_emails_like_on_home_page(contact):
     return "\n".join(filter(lambda x: x != "",
                             filter(lambda x: x is not None,
-                                   [contact.email1, contact.email2, contact.email3])))
+                                   [replace_whitespaces(contact.email1),
+                                    replace_whitespaces(contact.email2),
+                                    replace_whitespaces(contact.email3)])))
 
 
 def clear(s):
     return re.sub("[() -]", "", s)
+
+
+def as_ui(contact):
+    return Contact(id=contact.id, firstname=replace_whitespaces(contact.firstname),
+                   lastname=replace_whitespaces(contact.lastname),
+                   address=replace_whitespaces(contact.address),
+                   all_phones_from_home_page=merge_phones_like_on_home_page(contact),
+                   emails=merge_emails_like_on_home_page(contact))
+
+
+def replace_whitespaces(value):
+    return re.sub(" +", " ", value.strip())

@@ -17,8 +17,4 @@ def test_modify_some_group(app, db, check_ui):
     assert len(old_groups) == len(new_groups)
 
     if check_ui:
-        for group in new_groups:
-            index = new_groups.index(group)
-            new_groups[index] = Group(id=group.id, name=group.name.strip())
-
         assert sorted(new_groups, key=Group.id_or_max) == sorted(app.group.get_group_list(), key=Group.id_or_max)
