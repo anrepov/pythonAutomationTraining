@@ -28,7 +28,7 @@ def test_add_contact_to_group(app, db, db_orm, check_ui):
     assert len(old_contacts_in_group) + 1 == len(new_contacts_in_group)
 
     old_contacts_in_group.append(contact)
-    assert old_contacts_in_group == new_contacts_in_group
+    assert sorted(old_contacts_in_group, key=Contact.id_or_max) == sorted(new_contacts_in_group, key=Contact.id_or_max)
 
 
 def test_delete_contact_from_group(app, db, db_orm, check_ui):
@@ -50,4 +50,4 @@ def test_delete_contact_from_group(app, db, db_orm, check_ui):
     assert len(old_contacts_not_in_group) + 1 == len(new_contacts_not_in_group)
 
     old_contacts_in_group.remove(contact)
-    assert old_contacts_in_group == new_contacts_in_group
+    assert sorted(old_contacts_in_group, key=Contact.id_or_max) == sorted(new_contacts_in_group, key=Contact.id_or_max)
