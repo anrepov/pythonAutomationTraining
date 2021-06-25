@@ -1,0 +1,77 @@
+{
+  "uid" : "b1a8273437954620fa374b796ffaacdd",
+  "name" : "behaviors",
+  "children" : [ {
+    "name" : "test_add_group[None:::]",
+    "uid" : "f6ab248d03f768ee",
+    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
+    "status" : "passed",
+    "time" : {
+      "start" : 1624624794412,
+      "stop" : 1624624794831,
+      "duration" : 419
+    },
+    "flaky" : false,
+    "parameters" : [ "None:::" ]
+  }, {
+    "name" : "test_add_group[None:name7GT:headerTTXLJJeKYk:footerY lJJ8]",
+    "uid" : "ee97361a23ee07ee",
+    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
+    "status" : "passed",
+    "time" : {
+      "start" : 1624624794861,
+      "stop" : 1624624795222,
+      "duration" : 361
+    },
+    "flaky" : false,
+    "parameters" : [ "None:name7GT:headerTTXLJJeKYk:footerY lJJ8" ]
+  }, {
+    "name" : "test_add_group[None:nameOS:headerRhGwlr jsGIf91B:footer2]",
+    "uid" : "7c6d9f802007147f",
+    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
+    "status" : "passed",
+    "time" : {
+      "start" : 1624624795245,
+      "stop" : 1624624795627,
+      "duration" : 382
+    },
+    "flaky" : false,
+    "parameters" : [ "None:nameOS:headerRhGwlr jsGIf91B:footer2" ]
+  }, {
+    "name" : "test_add_group[None:nameY:header fQZ F:footerkZzIhgz 4u h]",
+    "uid" : "3f6588614ba0d8ea",
+    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
+    "status" : "passed",
+    "time" : {
+      "start" : 1624624795650,
+      "stop" : 1624624796036,
+      "duration" : 386
+    },
+    "flaky" : false,
+    "parameters" : [ "None:nameY:header fQZ F:footerkZzIhgz 4u h" ]
+  }, {
+    "name" : "test_add_group[None:nameqdykp bq:header9  DZI5nl8U89sPRs8:footer]",
+    "uid" : "958c0878838776cc",
+    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
+    "status" : "passed",
+    "time" : {
+      "start" : 1624624796062,
+      "stop" : 1624624796429,
+      "duration" : 367
+    },
+    "flaky" : false,
+    "parameters" : [ "None:nameqdykp bq:header9  DZI5nl8U89sPRs8:footer" ]
+  }, {
+    "name" : "test_add_group[None:name2aPV  kb :headerBi PXzbhvNryr:footer]",
+    "uid" : "5cfd8340526f7ce2",
+    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
+    "status" : "passed",
+    "time" : {
+      "start" : 1624624796453,
+      "stop" : 1624624796864,
+      "duration" : 411
+    },
+    "flaky" : false,
+    "parameters" : [ "None:name2aPV  kb :headerBi PXzbhvNryr:footer" ]
+  } ]
+}
