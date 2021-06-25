@@ -11,7 +11,7 @@ class Application:
         if browser == "firefox":
             self.wd = webdriver.Firefox()
         elif browser == "chrome":
-            self.wd = webdriver.Chrome("../drivers/chromedriver.exe")
+            self.wd = webdriver.Chrome()
         elif browser == "ie":
             self.wd = webdriver.Ie()
         else:
