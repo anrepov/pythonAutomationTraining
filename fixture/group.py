@@ -1,3 +1,5 @@
+import allure
+
 from model.group import Group
 
 
@@ -30,6 +32,7 @@ class GroupHelper:
         wd = self.app.wd
         wd.find_element_by_css_selector("input[value='%s']" % id).click()
 
+    @allure.step('Creating group "{0}"')
     def create(self, group):
         wd = self.app.wd
         self.open_groups_page()
